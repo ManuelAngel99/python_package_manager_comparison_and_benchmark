@@ -8,7 +8,7 @@
 
 ## Docker image build time benchmark
 
-Using rye with the `uv` backend is the fastest option, with a build time of ~10 seconds. Poetry is the seond fastest option, with a build time of ~25 seconds. However, when using the `pip` backend, rye is the slowest option, with a build time of ~35 seconds.
+Using rye with the `uv` backend is the fastest option, with a build time of ~10 seconds. Poetry is the seond fastest option, with a build time of ~20 seconds. However, when using the `pip` backend, rye is the slowest option, with a build time of ~35 seconds.
 
 Replicte the benchmark with:
 
@@ -31,19 +31,19 @@ Benchmarking poetry image build time
 cd poetry && time -f "Results:\nTime elapsed: %E\n" docker build . --no-cache --quiet
 sha256:8b08d8d822e74763628ea982a5f5a163c703b72c609ac3f1aa42fae850f8777c
 Results:
-Time elapsed: 0:25.10
+Time elapsed: 0:20.59
 
 Benchmarking rye image build time using the pip backend
 cd rye && time -f "Results:\nTime elapsed: %E\n" docker build -f Dockerfile.pip . --no-cache --quiet
 sha256:5c315e3597399048726a34404f329325c043c00944177a1bc594739458850dbe
 Results:
-Time elapsed: 0:35.31
+Time elapsed: 0:35.01
 
 Benchmarking rye image build time using the uv backend
 cd rye && time -f "Results:\nTime elapsed: %E\n" docker build -f Dockerfile.uv . --no-cache --quiet
 sha256:d85d9dbde05a9e4e439bf93a9cb0c95f23b480a1969968dee3cf7124ec893ea0
 Results:
-Time elapsed: 0:10.05
+Time elapsed: 0:09:43
 
 ```
 
