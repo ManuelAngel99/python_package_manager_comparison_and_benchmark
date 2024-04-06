@@ -1,0 +1,12 @@
+FROM python:3.12.2
+
+
+ADD --chmod=755 https://astral.sh/uv/install.sh /install.sh
+RUN /install.sh && rm /install.sh
+
+WORKDIR /app
+COPY requirements.lock ./
+RUN PYTHONDONTWRITEBYTECODE=1 /root/.cargo/bin/uv pip install --system --no-cache-dir -r requirements.lock
+
+COPY src .
+ENTRYPOINT  ["python"]
